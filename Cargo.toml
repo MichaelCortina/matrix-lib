@@ -1,7 +1,9 @@
 [package]
-name = "matrix-lib"
+name = "matrix-mc"
 version = "0.1.0"
 edition = "2021"
+description = "some useful matrix and vector operations performed on 2D Vecs of f64s"
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

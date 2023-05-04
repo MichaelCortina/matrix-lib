@@ -1,4 +1,4 @@
-use matrix_lib::{identity, rref, matrix, normalize, dup};
+use matrix_mc::{identity, rref, matrix, normalize, dup};
 
 #[test]
 fn init_identity_3x3() {

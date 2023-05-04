@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "matrix-lib"
+name = "matrix-mc"
 version = "0.1.0"
