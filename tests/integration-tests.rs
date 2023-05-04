@@ -1,4 +1,4 @@
-use matrix_lib::{identity, rref, matrix, normalize};
+use matrix_lib::{identity, rref, matrix, normalize, dup};
 
 #[test]
 fn init_identity_3x3() {
@@ -71,6 +71,23 @@ fn normalize_3x3() {
                 1, 0, 0;
                 0, 2, 0];
     normalize(&mut actual);
+
+    assert_eq!(expected, actual);
+}
+
+#[test]
+fn dup_rref_3x3() {
+    let expected = matrix!
+        [1, 0, 0;
+         0, 1, 0;
+         0, 0, 1];
+    
+    let input = matrix! 
+        [5, 4, 3;
+         2, 1, 9;
+         8, 7, 6];
+
+    let actual = dup(rref, &input);
 
     assert_eq!(expected, actual);
 }
