@@ -6,6 +6,24 @@
 /// 2D Vector of f64s
 pub type Matrix = Vec<Vec<f64>>;
 
+/// Returns a square Identity Matrix with length and width 
+/// provided by the parameter dim.
+/// 
+/// # Examples
+/// 
+/// ```
+/// use matrix_mc::{matrix, identity};
+/// 
+/// let method1 = matrix![
+///     1, 0, 0;
+///     0, 1, 0;
+///     0, 0, 1
+/// ];
+/// 
+/// let method2 = identity(3);
+/// 
+/// assert_eq!(method1, method2);
+/// ``` 
 pub fn identity(dim: usize) -> Matrix {
     let mut result = Vec::with_capacity(dim);
 
@@ -20,6 +38,29 @@ pub fn identity(dim: usize) -> Matrix {
     result
 }
 
+/// Row reduces the target matrix a.
+/// 
+/// # Examples
+/// 
+/// ```
+/// use matrix_mc::{matrix, rref};
+/// 
+/// let mut matrix = matrix![
+///     1, 2, 3;
+///     4, 5, 6;
+///     7, 8, 9
+/// ];
+/// 
+/// let result = matrix![
+///     1,  0, -1;
+///     0,  1,  2;
+///     0,  0,  0
+/// ];
+/// 
+/// rref(&mut matrix);
+/// 
+/// assert_eq!(matrix, result);
+/// ```
 pub fn rref(a: &mut Matrix) {
     let mut i = 0usize;
     while i < a.len() && i < a[0].len() {
@@ -47,6 +88,29 @@ pub fn rref(a: &mut Matrix) {
     }
 }
 
+/// Calculates the Euclidian (square root) norm of the provided matrix a
+/// 
+/// # Examples 
+/// 
+/// ```
+/// use matrix_mc::{matrix, normalize};
+/// 
+/// let mut matrix = matrix![
+///     1, 3, 2;
+///     0, 0, 1;
+///     0, 4, 2
+/// ];
+/// 
+/// let result = matrix![
+///     1, 3./5., 2./3.; 
+///     0,     0, 1./3.;
+///     0, 4./5., 2./3.
+/// ];
+/// 
+/// normalize(&mut matrix);
+/// 
+/// assert_eq!(matrix, result);
+/// ```
 pub fn normalize(a: &mut Matrix) {
     for i in 0..a.len() {
         let mut sum = 0f64;
@@ -95,7 +159,7 @@ where
 /// rows are of unequal size, 0s are added to make up for the
 /// difference
 ///
-/// #Examples
+/// # Examples
 ///
 /// ```
 /// use matrix_mc::{matrix, Matrix};
